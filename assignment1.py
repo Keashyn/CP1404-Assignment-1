@@ -21,7 +21,7 @@ def read_files():
 
 
 def check_total_place(user_input, data):
-    # Function to check availability of list places number
+    # Function to check availability of the list for places numbers
     data_sorter = sorted(data, key=lambda row: (row[3], int(row[2])))
     count_place = 0
     for a in data_sorter:
@@ -46,7 +46,7 @@ def check_place_mark(user_input, data):
 
 
 def check_num(user_input):
-    # Function to check is there any number in input
+    # Function to check is there any number in the input
     data = list(user_input)
     counter = 0
     for i in data:
@@ -89,7 +89,7 @@ def visit_place(data):
 
 
 def list_data(visited, data):
-    # Function to list the data from CSV files that already make in list
+    # Function to list the data from CSV files that already made  in a list
     counting = 0
     data_sorter = sorted(data, key=lambda row: (row[3], int(row[2])))
     for a in data_sorter:
@@ -148,7 +148,7 @@ def add_data(data):
 
 
 def mark_data(visited, data):
-    # Function to mark visited place
+    # Function to mark  places that has been visited
     list_data(visited, data)
     counter = 0
     data_sorter = sorted(data, key=lambda row: (row[3], int(row[2])))
@@ -178,7 +178,7 @@ def mark_data(visited, data):
 
 
 def write_data(NAME_FILE, data):
-    # Function to sort the data at last
+    # Function to sort the data at the end
     data_sorter = sorted(data, key=lambda row: (row[3], int(row[2])))
     with open(NAME_FILE, mode='w', newline="") as files:
         writer = csv.writer(files)
