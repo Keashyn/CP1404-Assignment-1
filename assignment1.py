@@ -6,7 +6,7 @@ GitHub URL:https://github.com/JCUS-CP1404/assignment-1-travel-tracker-Keashyn-na
 """
 import csv
 
-name="places.csv"
+name="Places.csv"
 
 def read():
 # Read and store files inside the CSV files
@@ -19,7 +19,7 @@ def read():
     return csv_data
 
 
-def check_total_place(user_input, data):
+def check_total_places(user_input, data):
     # Function to check availability of the list for places numbers
     data_sorter = sorted(data, key=lambda row: (row[3], int(row[2])))
     count_place = 0
@@ -60,7 +60,7 @@ def check_num(user_input):
         return True
 
 
-def check_symbol(user_input):
+def check_symbols(user_input):
     # Function to check symbol in user input
     data = list(user_input)
     counter = 0
@@ -112,7 +112,7 @@ def add_data(data):
             print("Input can not be blank")
         elif not check_num(place_name):
             print("Please input correct name")
-        elif not check_symbol(place_name):
+        elif not check_symbols(place_name):
             print("Please input correct name")
         else:
             break
@@ -123,7 +123,7 @@ def add_data(data):
             print("Input can not be blank")
         elif not check_num(country_name):
             print("Please input correct name")
-        elif not check_symbol(country_name):
+        elif not check_symbols(country_name):
             print("Please input correct name")
         else:
             break
@@ -159,7 +159,7 @@ def mark_data(visited, data):
             if user_input <= 0:
                 print("Number must be > 0")
                 continue
-            elif not check_total_place(user_input, data):
+            elif not check_total_places(user_input, data):
                 print("Invalid place number")
                 continue
             elif check_place_mark(user_input, data) == False:
@@ -175,59 +175,54 @@ def mark_data(visited, data):
                 print("{} in {} visited!".format(row[0], row[1]))
             row[3] = "v"
 
-
-def write_data(name, data):
-    # Function to sort the data at the end
-    data_sorter = sorted(data, key=lambda row: (row[3], int(row[2])))
-    with open(name, mode='w', newline="") as files:
-        writer = csv.writer(files)
+def write_data(name,data):
+    #Function to sort the data at the end
+    data_sorter=sorted(data, key= lambda row:(row[3],int(row[2])))
+    with open(name, mode='w', newline="")as file:
+        writer= csv.writer(file)
         for row in data_sorter:
             writer.writerow(row)
 
-
-def get_option(csv_data, name):
-    # Function to check and direct user_choice
+def get_option(csv_data,name):
+    #Function to check and show direct user_choice
     option = menu()
     while option != "Q":
-        visited = visit_place(csv_data)
-        if option == "L":
-            list_data(visited[0], csv_data)
+        visited= visit_place(csv_data)
+        if option =="L":
+            list_data(visited[0],csv_data)
             option = menu()
-        elif option == "A":
+        elif option =="A":
             add_data(csv_data)
-            option = menu()
-        elif option == "M":
-            if visited[0] > 0:
-                mark_data(visited[0], csv_data)
+            option= menu()
+        elif option =="M":
+            if visited[0]>0:
+                mark_data(visited[0],csv_data)
                 option = menu()
             else:
-                print("No unvisited place")
-                option = menu()
+                print("No unvisited places")
+                option= menu()
         else:
-            print("Invalid menu Choice")
+            print("Invalid menu choice")
             option = menu()
-    write_data(name, csv_data)
-
+    write_data(name,csv_data)
 
 def menu():
-    # Function to show menu and ask user_choice
-    print("Menu: ")
-    print("L - List places")
-    print("A - Add new place")
-    print("M - Mark a place as visited")
+    #Function shos the menu and ask user_choice
+    print("Menu:")
+    print("L - List Places")
+    print("A - Add new places")
+    print("M - Mark a place that has been visited")
     print("Q - Quit")
-    user_choice = input(">>> ").upper()
+    user_choice = input(">>>").upper()
     return user_choice
 
-
 def main():
-    data = read()
-    print("Travel Tracker 1.0 - by Keashyn Naidoo ")
+    data=read()
+    print("Travel Tracker 1.0 - by Keashyn Naidoo")
     print("{0} places loaded from {1}".format(visit_place(data)[1],name))
-    get_option(data, name)
+    get_option(data,name)
     print("{0} places saved to {1}".format(visit_place(data)[1],name))
-    print("Have a nice day :)")
+    print("Have a nice day")
 
-
-if __name__ == '__main__':
+if __name__=='__main__':
     main()
