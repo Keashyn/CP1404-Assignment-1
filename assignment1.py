@@ -206,7 +206,7 @@ def get_option(csv_data,name):
             option = menu()
     write_data(name,csv_data)
 
-def menu():
+def menu():\
     #Function shos the menu and ask user_choice
     print("Menu:")
     print("L - List Places")
