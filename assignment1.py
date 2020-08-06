@@ -6,13 +6,12 @@ GitHub URL:https://github.com/JCUS-CP1404/assignment-1-travel-tracker-Keashyn-na
 """
 import csv
 
-NAME_FILE = "places.csv"
+name="places.csv"
 
-
-def read_files():
-    # Read and store files inside the CSV files
+def read():
+# Read and store files inside the CSV files
     csv_data = []
-    with open(NAME_FILE, mode='r') as file:
+    with open(name, mode='r') as file:
         reader = csv.reader(file)
         for row in reader:
             csv_data.append(list(row))
@@ -177,16 +176,16 @@ def mark_data(visited, data):
             row[3] = "v"
 
 
-def write_data(NAME_FILE, data):
+def write_data(name, data):
     # Function to sort the data at the end
     data_sorter = sorted(data, key=lambda row: (row[3], int(row[2])))
-    with open(NAME_FILE, mode='w', newline="") as files:
+    with open(name, mode='w', newline="") as files:
         writer = csv.writer(files)
         for row in data_sorter:
             writer.writerow(row)
 
 
-def get_option(csv_data, NAME_FILE):
+def get_option(csv_data, name):
     # Function to check and direct user_choice
     option = menu()
     while option != "Q":
@@ -207,7 +206,7 @@ def get_option(csv_data, NAME_FILE):
         else:
             print("Invalid menu Choice")
             option = menu()
-    write_data(NAME_FILE, csv_data)
+    write_data(name, csv_data)
 
 
 def menu():
@@ -222,11 +221,11 @@ def menu():
 
 
 def main():
-    data = read_files()
+    data = read()
     print("Travel Tracker 1.0 - by Keashyn Naidoo ")
-    print("{0} places loaded from {1}".format(visit_place(data)[1], NAME_FILE))
-    get_option(data, NAME_FILE)
-    print("{0} places saved to {1}".format(visit_place(data)[1], NAME_FILE))
+    print("{0} places loaded from {1}".format(visit_place(data)[1],name))
+    get_option(data, name)
+    print("{0} places saved to {1}".format(visit_place(data)[1],name))
     print("Have a nice day :)")
 
 
