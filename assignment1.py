@@ -193,8 +193,8 @@ def get_option(csv_data,name):
             option = menu()
         elif option =="A":
             add_data(csv_data)
-            option= menu()
-        elif option =="M":
+            option = menu()
+        elif option == "M":
             if visited[0]>0:
                 mark_data(visited[0],csv_data)
                 option = menu()
@@ -207,7 +207,7 @@ def get_option(csv_data,name):
     write_data(name,csv_data)
 
 def menu():
-    #Function shos the menu and ask user_choice
+    #Function shows the menu and ask user_choice
     print("Menu:")
     print("L - List Places")
     print("A - Add new places")
