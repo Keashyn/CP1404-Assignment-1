@@ -44,7 +44,7 @@ def check_place_mark(user_input, data):
                 return True
 
 
-def check_num(user_input):
+def check_number(user_input):
     # Function to check is there any number in the input
     data = list(user_input)
     counter = 0
@@ -110,7 +110,7 @@ def add_data(data):
         place_name = str(input("Name: ")).capitalize()
         if place_name == "":
             print("Input can not be blank")
-        elif not check_num(place_name):
+        elif not check_number(place_name):
             print("Please input correct name")
         elif not check_symbols(place_name):
             print("Please input correct name")
@@ -121,7 +121,7 @@ def add_data(data):
         country_name = str(input("Country: ")).capitalize()
         if country_name == "":
             print("Input can not be blank")
-        elif not check_num(country_name):
+        elif not check_number(country_name):
             print("Please input correct name")
         elif not check_symbols(country_name):
             print("Please input correct name")
